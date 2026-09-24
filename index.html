@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dumbphone — Privacy Policy</title>
-    <meta name="description" content="Privacy Policy for Dumbphone, a digital minimalism launcher for iOS. All your data stays on your device — no tracking, no analytics, no servers.">
+    <title>Tregua — Privacy Policy</title>
+    <meta name="description" content="Privacy Policy for Tregua (formerly Dumbphone), a launcher and app-pausing tool for intentional phone use on iOS. What it stores on your iPhone, what it sends, to whom, and how to delete it.">
     <link rel="alternate" hreflang="en" href="https://mikeastwood.github.io/dumbphone-privacy/">
     <link rel="alternate" hreflang="es" href="https://mikeastwood.github.io/dumbphone-privacy/">
     <style>
@@ -193,128 +193,176 @@
 <body>
     <div class="container">
         <header>
-            <div class="logo">dumbphone</div>
+            <div class="logo">tregua</div>
             <h1 id="page-title">Privacy Policy</h1>
-            <p class="updated" id="page-date">Last updated: April 7, 2026</p>
+            <p class="updated" id="page-date">Last updated: September 24, 2026</p>
         </header>
 
         <nav class="lang-toggle" aria-label="Language selection">
             <button class="lang-btn active" id="btn-en" onclick="setLang('en')" aria-label="English">English</button>
-            <button class="lang-btn" id="btn-es" onclick="setLang('es')" aria-label="Espanol">Español</button>
+            <button class="lang-btn" id="btn-es" onclick="setLang('es')" aria-label="Español">Español</button>
         </nav>
 
         <!-- ==================== ENGLISH ==================== -->
         <article id="content-en" lang="en">
             <div class="summary">
-                <strong>All your data stays on your device.</strong>
-                Dumbphone stores everything locally using SwiftData. There are no analytics, no advertising, no servers, and no third-party tracking. Optional iCloud sync keeps your profiles in your private iCloud account.
+                <strong>Tregua works on your iPhone and has no accounts.</strong>
+                We run no servers, show no ads, and use no analytics or tracking tools. A few things do leave your device, each only for the feature that needs it: purchase records and basic device information go to RevenueCat, which checks Tregua Pro; the coordinates of your weather city go to Apple Weather if you use a weather widget; app searches and icon requests go to Apple&rsquo;s public App Store directory; and, only if you turn on iCloud sync (Pro), your profiles and rules go to your own private iCloud.
             </div>
 
             <section>
                 <h2>1. Introduction</h2>
-                <p>Dumbphone is a digital minimalism app for iOS that replaces your home screen with a text-based launcher and helps you build intentional phone habits. The app is designed with privacy as a core principle: it works 100% offline, stores your data locally on your device, and never transmits data to external servers. This privacy policy explains what data the app stores, how it is used, and your rights regarding that data.</p>
+                <p>Tregua (formerly named Dumbphone) is an iOS app for intentional phone use: a text-based launcher and widgets, plus rules that pause the apps you choose. This policy describes what version 2.0 of the app stores, what it sends and to whom, and how you can delete it. It is written from what the app&rsquo;s code actually does.</p>
+                <p>Tregua is made by Mike Pulgar Olguin, an individual developer. &ldquo;We&rdquo; and &ldquo;us&rdquo; below mean him.</p>
             </section>
 
             <section>
-                <h2>2. What Data We Store</h2>
-                <p>Dumbphone stores the following data that you create through normal use of the app:</p>
+                <h2>2. What Tregua Stores on Your iPhone</h2>
+                <p>Everything you create in Tregua is stored on your iPhone, in a private App Group container shared only by the app and its own extensions (widgets, the shield, the schedule monitor, and the usage report):</p>
                 <ul>
-                    <li><strong>Profiles:</strong> Name, accent color, active/inactive state, friction type, friction intensity, launcher appearance preferences, commitment message.</li>
-                    <li><strong>Schedules:</strong> Start/end times, active days (weekday/weekend/custom), profile association.</li>
-                    <li><strong>Launcher Items:</strong> App labels, sort order, profile association.</li>
-                    <li><strong>App Preferences:</strong> Active profile selection, launcher style, friction level, onboarding state.</li>
-                    <li><strong>Widget Settings:</strong> Font, size, spacing, alignment, text color, background style per profile.</li>
+                    <li><strong>Profiles:</strong> name, description, icon, color, whether the profile is active, the look of your launcher (fonts, colors, backgrounds), and widget settings, such as the text of the Thought widget, the city of a weather widget and its coordinates, and the labels of the Classic Phone widget.</li>
+                    <li><strong>Rules and schedules:</strong> rule names, days and times, time limits, the pause exercise and unlock settings you chose, pause state, custom shield messages, and the app selections you make (see section 3).</li>
+                    <li><strong>Launcher views and items:</strong> view names, the labels you give apps, and the app links you add.</li>
+                    <li><strong>Never Allowed list:</strong> the websites you type and whether the adult-content filter is on.</li>
+                    <li><strong>Your activity in Tregua:</strong> daily counts used by the Analytics tab, such as pauses completed or abandoned, times you respected a shield, unlocks, how long a profile was active, and time used from a daily limit. These counts never leave your iPhone and are never synced.</li>
+                    <li><strong>Settings and onboarding answers</strong>, such as your estimate of your daily screen time. They stay on your iPhone.</li>
+                    <li><strong>Caches:</strong> downloaded app icons, the latest weather forecast, and Apple Weather&rsquo;s attribution image.</li>
                 </ul>
-                <p>All of this data is created by you through your use of the app. Dumbphone does not collect data from external sources or third parties.</p>
+                <p>A few small technical records are kept in the iOS Keychain: the timers of temporary unlocks, and the identifiers of the restriction groups the app has created. Tregua uses the second list to clean up leftover restrictions when it is reinstalled.</p>
             </section>
 
             <section>
-                <h2>3. Screen Time API</h2>
-                <p>Dumbphone uses Apple's Screen Time API (FamilyControls, ManagedSettings, DeviceActivity) to provide app blocking and friction features. Important details:</p>
+                <h2>3. Screen Time</h2>
+                <p>Tregua uses Apple&rsquo;s Screen Time frameworks (FamilyControls, ManagedSettings, DeviceActivity):</p>
                 <ul>
-                    <li>Dumbphone uses <strong>individual authorization</strong> (.individual), not parental controls. You block apps on your own device, for yourself.</li>
-                    <li><strong>App selection tokens</strong> (which apps you choose to block) are opaque identifiers provided by Apple. Dumbphone cannot see app names or bundle identifiers from these tokens.</li>
-                    <li>Tokens are stored <strong>locally on your device</strong> using SwiftData. They are device-specific and cannot be synced.</li>
-                    <li>Blocking configurations are managed through Apple's ManagedSettingsStore, which persists on your device.</li>
-                    <li><strong>No usage data is transmitted</strong> to any server. All Screen Time processing happens on-device.</li>
-                    <li>You can revoke Screen Time authorization at any time via Settings > Screen Time.</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>4. How Data Is Stored</h2>
-                <p>Your data is stored locally on your device using Apple's SwiftData framework. Data is shared between the main app and its extensions (widgets, shield, monitor) through a secure App Group container on your device. This data never leaves your device unless you enable iCloud sync.</p>
-            </section>
-
-            <section>
-                <h2>5. Optional iCloud Sync</h2>
-                <p>If you enable iCloud sync, your profiles and launcher items are synced to your private iCloud account via Apple's CloudKit service:</p>
-                <ul>
-                    <li><strong>Private Database:</strong> All synced data is stored in your private CloudKit container. Only you can access it.</li>
-                    <li>Data is <strong>encrypted in transit and at rest</strong> by Apple.</li>
-                    <li>The developer of Dumbphone <strong>cannot read, access, or view</strong> your synced data.</li>
-                    <li><strong>Screen Time tokens are NOT synced</strong> — they are device-specific and remain local.</li>
-                    <li>iCloud sync is <strong>optional</strong> and can be disabled at any time in the app's settings.</li>
-                </ul>
-                <p>Apple's own privacy policy applies to iCloud storage: <a href="https://www.apple.com/privacy/" target="_blank" rel="noopener">apple.com/privacy</a></p>
-            </section>
-
-            <section>
-                <h2>6. What We Do Not Collect</h2>
-                <p>Dumbphone does <strong>not</strong> use or include:</p>
-                <ul>
-                    <li>Analytics SDKs (no Firebase, no Mixpanel, no Google Analytics)</li>
-                    <li>Crash reporting SDKs (no Crashlytics, no Sentry)</li>
-                    <li>Advertising frameworks or identifiers</li>
-                    <li>Location services</li>
-                    <li>Access to contacts, photos, or camera</li>
-                    <li>Third-party data sharing of any kind</li>
-                    <li>Cross-app or cross-site tracking</li>
-                    <li>User accounts, registration, or login</li>
-                </ul>
-                <p>No data is sent to any server other than Apple's iCloud infrastructure (only if you opt into sync).</p>
-            </section>
-
-            <section>
-                <h2>7. Data Deletion</h2>
-                <p>You have full control over your data:</p>
-                <ul>
-                    <li><strong>Delete individual profiles</strong> within the app. Associated schedules, launcher items, and blocking configurations are automatically removed.</li>
-                    <li><strong>Uninstalling the app</strong> removes all local data from your device and clears all app-blocking configurations.</li>
-                    <li><strong>Revoking Screen Time authorization</strong> in Settings > Screen Time removes all blocking rules immediately.</li>
-                    <li>If you used iCloud sync, synced data persists in your iCloud account until you manually delete it through iCloud settings.</li>
+                    <li>Tregua uses <strong>individual authorization</strong>, not parental controls. You restrict apps on your own iPhone, for yourself.</li>
+                    <li>When you choose apps, iOS gives Tregua <strong>opaque tokens</strong>. Tregua&rsquo;s code cannot read app names or bundle identifiers from them; iOS draws the names and icons for the app.</li>
+                    <li>The tokens are stored with your rules on your iPhone. <strong>If you turn on iCloud sync, they are included in the synced rules</strong> in your private iCloud (section 8). They are never sent to us or to RevenueCat.</li>
+                    <li>Restrictions are applied by iOS itself (ManagedSettings) and schedules are run by iOS (DeviceActivity).</li>
+                    <li>The Screen Time usage figures shown in Analytics are drawn by an extension that Apple isolates from the internet. Tregua does not store or send them.</li>
+                    <li>If you turn on the Never Allowed adult-content filter or add websites to it, iOS applies Apple&rsquo;s filter and turns off Safari Private Browsing while it is on.</li>
+                    <li>You can remove Tregua&rsquo;s Screen Time access at any time in iOS Settings &gt; Screen Time. Doing so lifts every restriction Tregua has set.</li>
                 </ul>
             </section>
 
             <section>
-                <h2>8. Wellness Disclaimer</h2>
-                <p>Dumbphone is a general wellness and productivity tool for intentional phone use. It is not a medical device. It does not diagnose, treat, cure, or prevent any disease or condition. If you have concerns about your relationship with technology, consult a qualified professional.</p>
+                <h2>4. What Leaves Your iPhone</h2>
+                <p>We have no servers. Only these services receive data from Tregua, and only for the feature listed:</p>
+                <ul>
+                    <li><strong>RevenueCat</strong> (a US company that manages in-app purchases): every time you open Tregua. See section 5.</li>
+                    <li><strong>Apple App Store:</strong> payments for Tregua Pro, handled entirely by Apple.</li>
+                    <li><strong>Apple Weather (WeatherKit) and Apple Maps:</strong> only if you use a weather widget. See section 6.</li>
+                    <li><strong>Apple&rsquo;s public App Store directory</strong> (itunes.apple.com): when you pick apps for the launcher, Tregua downloads app icons from it for a fixed catalog of apps, not a list of the apps you have installed. If you search the App Store from inside Tregua, the text you type and your App Store region are sent to it. No identifier of yours is included, and searches are not saved.</li>
+                    <li><strong>Apple iCloud:</strong> only if you turn on iCloud sync (Pro). See section 8.</li>
+                </ul>
+                <p>Any connection to the internet also reveals your device&rsquo;s IP address to the server it reaches.</p>
             </section>
 
             <section>
-                <h2>9. Children's Privacy</h2>
-                <p>Dumbphone is designed for adults who want to manage their own phone habits. The app uses individual Screen Time authorization (not parental controls). It does not require accounts, registration, or personal information. There are no social features or user-generated content.</p>
+                <h2>5. Purchases and RevenueCat</h2>
+                <p>Tregua is free to use, with an optional Tregua Pro upgrade (monthly or yearly subscription, or a one-time Lifetime purchase). Payments are processed by Apple. We never see your name, your Apple Account, or your payment details.</p>
+                <p>To know whether you have Tregua Pro and to restore purchases, Tregua uses RevenueCat. Its software starts each time you open Tregua, <strong>even if you never buy anything</strong>, and sends RevenueCat:</p>
+                <ul>
+                    <li>a random, anonymous user ID created on your iPhone;</li>
+                    <li>your purchase and subscription records, if any: product, dates, price, currency and App Store country;</li>
+                    <li>technical details: device model, iOS version, app version, preferred languages, and Apple&rsquo;s &ldquo;identifier for vendor&rdquo; (an ID that iOS assigns to one developer&rsquo;s apps on your device).</li>
+                </ul>
+                <p>No name, email address or Apple Account is sent. We use this information to unlock Pro features, to restore purchases, and to see sales and subscription figures in RevenueCat&rsquo;s dashboard. We do not use it for advertising or to track you across other companies&rsquo; apps or websites. RevenueCat processes it in the United States under its own <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">privacy policy</a>.</p>
+                <p>If you start a free trial and have allowed notifications, Tregua schedules a reminder on your iPhone before the trial ends.</p>
             </section>
 
             <section>
-                <h2>10. Your Rights by Jurisdiction</h2>
-
-                <p><strong>European Union / EEA (GDPR):</strong> Your data is processed on-device and optionally synced through Apple's CloudKit to your private iCloud container. The developer does not have server-side access to your data. Data controller: Mike Pulgar Olguin, individual developer, Spain. Legal basis: legitimate interest (app functionality). To exercise your GDPR rights (access, rectification, erasure, portability, objection), contact: <a href="mailto:mike@mikeastwood.dev">mike@mikeastwood.dev</a>. Supervisory authority: <a href="https://www.aepd.es" target="_blank" rel="noopener">AEPD</a>, C/ Jorge Juan 6, 28001 Madrid, Spain.</p>
-
-                <p><strong>United Kingdom (UK GDPR):</strong> UK residents have the same rights as under GDPR. Supervisory authority: <a href="https://ico.org.uk" target="_blank" rel="noopener">ICO</a>, Wycliffe House, Water Lane, Wilmslow, SK9 5AF, United Kingdom.</p>
-
-                <p><strong>California, USA (CCPA/CPRA):</strong> We do not sell personal information. We do not share personal information for cross-context behavioral advertising. We do not use sensitive personal information for unauthorized purposes.</p>
-
-                <p><strong>Brazil (LGPD), Canada (PIPEDA), South Africa (POPIA), Japan (APPI):</strong> Your data rights are respected under all applicable jurisdictions. Since the developer cannot access your data, your rights to access, correction, deletion, and portability are exercised directly through the app and your iCloud settings.</p>
+                <h2>6. Weather and Location</h2>
+                <p>The weather widgets are optional. If you use one:</p>
+                <ul>
+                    <li><strong>Choosing a city by hand:</strong> the text you type in the city search is sent to Apple Maps to suggest cities.</li>
+                    <li><strong>&ldquo;Use my location&rdquo; (optional):</strong> Tregua asks for location permission only when you tap it. It asks for &ldquo;While Using the App&rdquo; access with approximate location (Precise Location off), never &ldquo;Always&rdquo;. It takes one reading per tap and never tracks you in the background. Apple&rsquo;s geocoder turns that reading into a city name.</li>
+                    <li>Tregua saves the city and its coordinates, and sends the <strong>coordinates</strong> to Apple Weather (WeatherKit) to get the forecast: when the widget needs it, and in periodic background refreshes allowed by iOS. Background refreshes reuse the saved coordinates; they do not take a new location reading.</li>
+                    <li>If iCloud sync is on, the widget&rsquo;s city and coordinates sync with your profile (section 8).</li>
+                </ul>
+                <p>We never receive your location. Apple&rsquo;s <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">privacy policy</a> covers Apple Weather and Apple Maps. You can turn location off at any time in iOS Settings &gt; Privacy &amp; Security &gt; Location Services &gt; Tregua; the widgets then use the city you pick by hand.</p>
             </section>
 
             <section>
-                <h2>11. Changes to This Policy</h2>
-                <p>If we make changes to this privacy policy, we will communicate them through an app update. The effective date at the top of this policy will be updated accordingly. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
+                <h2>7. Camera</h2>
+                <p>The camera is used only by the &ldquo;Move a little&rdquo; exercise, an optional Pro pause that counts your repetitions (for example, squats) before an app opens. Tregua uses the front camera and Apple&rsquo;s on-device Vision framework to detect your body position. <strong>No photo or video is recorded, stored or sent.</strong> Tregua asks for camera permission only when this exercise starts, and you can revoke it in iOS Settings &gt; Tregua.</p>
             </section>
 
             <section>
-                <h2>12. Contact</h2>
+                <h2>8. Optional iCloud Sync (Pro)</h2>
+                <p>iCloud sync is off by default. If you turn it on (Settings &gt; Sync with iCloud), Tregua copies these records to your private iCloud database through Apple&rsquo;s CloudKit service:</p>
+                <ul>
+                    <li>profiles, including whether each one is active and its launcher and widget settings (for example, a weather city and its coordinates);</li>
+                    <li>rules and schedules, including the Screen Time app tokens described in section 3;</li>
+                    <li>launcher views and items.</li>
+                </ul>
+                <p>Your Analytics counts, the Never Allowed list, friction presets, default distractions and app settings are <strong>not</strong> synced.</p>
+                <p>Synced data lives in your own private iCloud database, which only your Apple Account can access; we cannot read it. Because the active state of a profile syncs, activating or deactivating a profile on one device can change it on your other devices. Turning sync off stops sending new changes; data already in iCloud stays there until you delete it (section 11). Apple&rsquo;s <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">privacy policy</a> applies to iCloud.</p>
+            </section>
+
+            <section>
+                <h2>9. Other Permissions and Features</h2>
+                <ul>
+                    <li><strong>Photos (add only):</strong> if you save a Tregua wallpaper, iOS asks permission to add photos. Tregua can add that image but cannot see your photo library.</li>
+                    <li><strong>Notifications:</strong> notifications about your rules, sessions and free trial are scheduled on your iPhone. Tregua does not send push notifications from a server.</li>
+                    <li><strong>Contacts, microphone, health data, advertising identifier:</strong> Tregua does not ask for them.</li>
+                    <li><strong>Emailing support:</strong> if you email us from Settings &gt; Support, we receive your email address and your message. The draft includes the app version, device model, iOS version and app language, which you can delete before sending. We use your email only to reply.</li>
+                    <li><strong>Crash reports:</strong> if you have turned on &ldquo;Share With App Developers&rdquo; in iOS Settings &gt; Privacy &amp; Security &gt; Analytics &amp; Improvements, Apple may share anonymous crash reports with us. Apple controls this.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>10. What We Do Not Do</h2>
+                <ul>
+                    <li>No analytics SDKs (no Firebase, Mixpanel or Google Analytics).</li>
+                    <li>No crash-reporting SDKs (no Crashlytics or Sentry).</li>
+                    <li>No advertising, and no advertising identifier.</li>
+                    <li>No tracking across other companies&rsquo; apps or websites.</li>
+                    <li>No user accounts, registration or login.</li>
+                    <li>We do not sell your data or share it for advertising.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>11. Deleting Your Data</h2>
+                <ul>
+                    <li><strong>Profiles and rules:</strong> deleting one in the app removes it and lifts its restrictions. With iCloud sync on, it is also deleted from iCloud.</li>
+                    <li><strong>Settings &gt; Erase All Data:</strong> deletes your profiles, rules, schedules, launcher views and settings; lifts every restriction, including the Never Allowed list; cancels scheduled notifications; clears the Keychain records; and deletes Tregua&rsquo;s data from your private iCloud. If your iPhone is offline at that moment, the iCloud copy may remain; you can also delete it from your iCloud storage settings. In the current version, the Analytics counts, friction presets and default distractions are not erased by this button; they stay on your iPhone until you delete the app.</li>
+                    <li><strong>Deleting the app</strong> removes Tregua and the data it stores on your iPhone, except the small Keychain records, which iOS may keep. <strong>Restrictions that are active when you delete the app can stay in place</strong>, because iOS applies them, not the app. Before deleting Tregua, deactivate your profiles or use Erase All Data. At any time, removing Tregua&rsquo;s Screen Time access in iOS Settings &gt; Screen Time lifts all of them. If you reinstall Tregua, it clears the leftover restrictions it can identify.</li>
+                    <li><strong>iCloud:</strong> synced data stays in your iCloud until you use Erase All Data or delete it from your iCloud storage settings.</li>
+                    <li><strong>RevenueCat:</strong> to have your purchase record deleted, email us. Because the record is anonymous, we may ask for details from your App Store receipt to find it.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>12. Wellness Disclaimer</h2>
+                <p>Tregua is a general wellness and productivity tool for intentional phone use. It is not a medical device. It does not diagnose, treat, cure, or prevent any disease or condition. If you have concerns about your relationship with technology, consult a qualified professional.</p>
+            </section>
+
+            <section>
+                <h2>13. Children&rsquo;s Privacy</h2>
+                <p>Tregua is designed for adults who want to manage their own phone use. It uses individual Screen Time authorization, not parental controls. It has no accounts, no social features and no user-generated content shared with others, and we do not knowingly collect personal information from children.</p>
+            </section>
+
+            <section>
+                <h2>14. Your Rights by Jurisdiction</h2>
+
+                <p><strong>European Union / EEA (GDPR):</strong> Most of your data never leaves your iPhone, and data synced to iCloud is stored in your private iCloud database, which we cannot access. The data we can access is the anonymous purchase record held by RevenueCat (section 5) and any email you send us. Data controller: Mike Pulgar Olguin, individual developer, Spain. Legal bases: performance of a contract (providing and restoring purchases), your consent (approximate location, which you can withdraw in iOS Settings), and legitimate interest (making the app&rsquo;s features work and understanding sales). RevenueCat acts as our processor and processes data in the United States. To exercise your rights (access, rectification, erasure, portability, objection), contact <a href="mailto:mike@mikeastwood.dev">mike@mikeastwood.dev</a>. Supervisory authority: <a href="https://www.aepd.es" target="_blank" rel="noopener">AEPD</a>, C/ Jorge Juan 6, 28001 Madrid, Spain.</p>
+
+                <p><strong>United Kingdom (UK GDPR):</strong> UK residents have the same rights as under the GDPR. Supervisory authority: <a href="https://ico.org.uk" target="_blank" rel="noopener">ICO</a>, Wycliffe House, Water Lane, Wilmslow, SK9 5AF, United Kingdom.</p>
+
+                <p><strong>California, USA (CCPA/CPRA):</strong> We do not sell personal information. We do not share personal information for cross-context behavioral advertising. We do not use sensitive personal information for purposes other than providing the app.</p>
+
+                <p><strong>Brazil (LGPD), Canada (PIPEDA), South Africa (POPIA), Japan (APPI):</strong> You have the rights these laws give you. Most of them you can exercise directly: your data is on your iPhone and in your iCloud, and you can delete it as described in section 11. For the RevenueCat purchase record, contact us.</p>
+            </section>
+
+            <section>
+                <h2>15. Changes to This Policy</h2>
+                <p>If what Tregua collects or sends changes, we will update this policy and the date at the top of this page before, or together with, the app update that makes the change.</p>
+            </section>
+
+            <section>
+                <h2>16. Contact</h2>
                 <p>If you have questions about this privacy policy or your data:</p>
                 <ul>
                     <li><strong>Email:</strong> <a href="mailto:mike@mikeastwood.dev">mike@mikeastwood.dev</a></li>
@@ -326,120 +374,168 @@
         <!-- ==================== SPANISH ==================== -->
         <article id="content-es" lang="es" class="hidden">
             <div class="summary">
-                <strong>Todos tus datos permanecen en tu dispositivo.</strong>
-                Dumbphone almacena todo localmente usando SwiftData. No hay analiticas, ni publicidad, ni servidores, ni rastreo de terceros. La sincronizacion opcional con iCloud mantiene tus perfiles en tu cuenta privada de iCloud.
+                <strong>Tregua funciona en tu iPhone y no tiene cuentas.</strong>
+                No tenemos servidores, no mostramos anuncios y no usamos herramientas de analítica ni de rastreo. Algunas cosas sí salen de tu dispositivo, cada una solo para la función que la necesita: los registros de compra y datos básicos del dispositivo van a RevenueCat, que comprueba Tregua Pro; las coordenadas de tu ciudad del clima van a Apple Weather si usas un widget del clima; las búsquedas de apps y las peticiones de iconos van al directorio público de la App Store de Apple; y, solo si activas la sincronización con iCloud (Pro), tus perfiles y reglas van a tu propio iCloud privado.
             </div>
 
             <section>
-                <h2>1. Introduccion</h2>
-                <p>Dumbphone es una app de minimalismo digital para iOS que reemplaza tu pantalla de inicio con un lanzador basado en texto y te ayuda a construir habitos intencionales con tu telefono. La app esta disenada con la privacidad como principio fundamental: funciona 100% sin conexion, almacena tus datos localmente en tu dispositivo y nunca transmite datos a servidores externos. Esta politica de privacidad explica que datos almacena la app, como se utilizan y tus derechos sobre ellos.</p>
+                <h2>1. Introducción</h2>
+                <p>Tregua (antes llamada Dumbphone) es una app de iOS para usar el teléfono con intención: un lanzador de texto y widgets, y reglas que pausan las apps que eliges. Esta política describe qué guarda la versión 2.0 de la app, qué envía y a quién, y cómo puedes borrarlo. Está escrita a partir de lo que hace realmente el código de la app.</p>
+                <p>Tregua la hace Mike Pulgar Olguin, desarrollador independiente. «Nosotros» significa él.</p>
             </section>
 
             <section>
-                <h2>2. Que datos almacenamos</h2>
-                <p>Dumbphone almacena los siguientes datos que creas mediante el uso normal de la app:</p>
+                <h2>2. Qué guarda Tregua en tu iPhone</h2>
+                <p>Todo lo que creas en Tregua se guarda en tu iPhone, en un contenedor privado de App Group que solo comparten la app y sus propias extensiones (los widgets, el escudo, el monitor de horarios y el informe de uso):</p>
                 <ul>
-                    <li><strong>Perfiles:</strong> Nombre, color de acento, estado activo/inactivo, tipo de friccion, intensidad de friccion, preferencias de apariencia del lanzador, mensaje de compromiso.</li>
-                    <li><strong>Horarios:</strong> Horas de inicio/fin, dias activos (entre semana/fin de semana/personalizado), perfil asociado.</li>
-                    <li><strong>Elementos del lanzador:</strong> Etiquetas de apps, orden, perfil asociado.</li>
-                    <li><strong>Preferencias de la app:</strong> Perfil activo seleccionado, estilo del lanzador, nivel de friccion, estado del onboarding.</li>
-                    <li><strong>Configuracion de widgets:</strong> Fuente, tamano, espaciado, alineacion, color del texto, estilo de fondo por perfil.</li>
+                    <li><strong>Perfiles:</strong> nombre, descripción, icono, color, si el perfil está activo, el aspecto de tu lanzador (fuentes, colores, fondos) y los ajustes de los widgets, como el texto del widget Pensamiento, la ciudad de un widget del clima y sus coordenadas, y las etiquetas del widget Teléfono clásico.</li>
+                    <li><strong>Reglas y horarios:</strong> nombres de las reglas, días y horas, límites de tiempo, el ejercicio de pausa y los ajustes de desbloqueo que elegiste, el estado de pausa, los mensajes personalizados del escudo y las apps que seleccionas (ver la sección 3).</li>
+                    <li><strong>Vistas y elementos del lanzador:</strong> nombres de las vistas, las etiquetas que pones a las apps y los enlaces de apps que añades.</li>
+                    <li><strong>Lista Nunca permitido:</strong> los sitios web que escribes y si el filtro de contenido para adultos está activado.</li>
+                    <li><strong>Tu actividad en Tregua:</strong> recuentos diarios que usa la pestaña Estadísticas, como pausas completadas o abandonadas, veces que respetaste un escudo, desbloqueos, cuánto tiempo estuvo activo un perfil y el tiempo usado de un límite diario. Estos recuentos nunca salen de tu iPhone y nunca se sincronizan.</li>
+                    <li><strong>Ajustes y respuestas de la bienvenida</strong>, como tu estimación de tu tiempo de pantalla diario. Se quedan en tu iPhone.</li>
+                    <li><strong>Cachés:</strong> iconos de apps descargados, el último pronóstico del tiempo y la imagen de atribución de Apple Weather.</li>
                 </ul>
-                <p>Todos estos datos son creados por ti mediante tu uso de la app. Dumbphone no recopila datos de fuentes externas ni de terceros.</p>
+                <p>Algunos registros técnicos pequeños se guardan en el llavero de iOS: los temporizadores de los desbloqueos temporales y los identificadores de los grupos de restricciones que la app ha creado. Tregua usa esa segunda lista para limpiar restricciones que hayan quedado cuando se reinstala.</p>
             </section>
 
             <section>
-                <h2>3. API de Tiempo de Pantalla</h2>
-                <p>Dumbphone utiliza la API de Tiempo de Pantalla de Apple (FamilyControls, ManagedSettings, DeviceActivity) para proporcionar funciones de bloqueo de apps y friccion. Detalles importantes:</p>
+                <h2>3. Tiempo de uso (Screen Time)</h2>
+                <p>Tregua usa los frameworks de Tiempo de uso de Apple (FamilyControls, ManagedSettings, DeviceActivity):</p>
                 <ul>
-                    <li>Dumbphone usa <strong>autorizacion individual</strong> (.individual), no controles parentales. Tu bloqueas apps en tu propio dispositivo, para ti mismo.</li>
-                    <li>Los <strong>tokens de seleccion de apps</strong> (que apps eliges bloquear) son identificadores opacos proporcionados por Apple. Dumbphone no puede ver nombres de apps ni identificadores de paquetes a partir de estos tokens.</li>
-                    <li>Los tokens se almacenan <strong>localmente en tu dispositivo</strong> usando SwiftData. Son especificos del dispositivo y no se pueden sincronizar.</li>
-                    <li>Las configuraciones de bloqueo se gestionan a traves del ManagedSettingsStore de Apple, que persiste en tu dispositivo.</li>
-                    <li><strong>No se transmiten datos de uso</strong> a ningun servidor. Todo el procesamiento de Tiempo de Pantalla ocurre en el dispositivo.</li>
-                    <li>Puedes revocar la autorizacion de Tiempo de Pantalla en cualquier momento en Ajustes > Tiempo de Pantalla.</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>4. Como se almacenan los datos</h2>
-                <p>Tus datos se almacenan localmente en tu dispositivo usando el framework SwiftData de Apple. Los datos se comparten entre la app principal y sus extensiones (widgets, shield, monitor) a traves de un contenedor seguro de App Group en tu dispositivo. Estos datos nunca salen de tu dispositivo a menos que actives la sincronizacion con iCloud.</p>
-            </section>
-
-            <section>
-                <h2>5. Sincronizacion opcional con iCloud</h2>
-                <p>Si activas la sincronizacion con iCloud, tus perfiles y elementos del lanzador se sincronizan con tu cuenta privada de iCloud via el servicio CloudKit de Apple:</p>
-                <ul>
-                    <li><strong>Base de datos privada:</strong> Todos los datos sincronizados se almacenan en tu contenedor privado de CloudKit. Solo tu puedes acceder a ellos.</li>
-                    <li>Los datos estan <strong>cifrados en transito y en reposo</strong> por Apple.</li>
-                    <li>El desarrollador de Dumbphone <strong>no puede leer, acceder ni ver</strong> tus datos sincronizados.</li>
-                    <li><strong>Los tokens de Tiempo de Pantalla NO se sincronizan</strong> — son especificos del dispositivo y permanecen locales.</li>
-                    <li>La sincronizacion con iCloud es <strong>opcional</strong> y se puede desactivar en cualquier momento en los ajustes de la app.</li>
-                </ul>
-                <p>La politica de privacidad de Apple aplica al almacenamiento en iCloud: <a href="https://www.apple.com/privacy/" target="_blank" rel="noopener">apple.com/privacy</a></p>
-            </section>
-
-            <section>
-                <h2>6. Que no recopilamos</h2>
-                <p>Dumbphone <strong>no</strong> usa ni incluye:</p>
-                <ul>
-                    <li>SDKs de analiticas (no Firebase, no Mixpanel, no Google Analytics)</li>
-                    <li>SDKs de reportes de errores (no Crashlytics, no Sentry)</li>
-                    <li>Frameworks de publicidad ni identificadores</li>
-                    <li>Servicios de ubicacion</li>
-                    <li>Acceso a contactos, fotos o camara</li>
-                    <li>Comparticion de datos con terceros de ningun tipo</li>
-                    <li>Rastreo entre apps o entre sitios web</li>
-                    <li>Cuentas de usuario, registro ni inicio de sesion</li>
-                </ul>
-                <p>Ningun dato se envia a ningun servidor que no sea la infraestructura de iCloud de Apple (solo si activas la sincronizacion).</p>
-            </section>
-
-            <section>
-                <h2>7. Eliminacion de datos</h2>
-                <p>Tienes control total sobre tus datos:</p>
-                <ul>
-                    <li><strong>Eliminar perfiles individuales</strong> dentro de la app. Los horarios, elementos del lanzador y configuraciones de bloqueo asociados se eliminan automaticamente.</li>
-                    <li><strong>Desinstalar la app</strong> elimina todos los datos locales de tu dispositivo y borra todas las configuraciones de bloqueo de apps.</li>
-                    <li><strong>Revocar la autorizacion de Tiempo de Pantalla</strong> en Ajustes > Tiempo de Pantalla elimina todas las reglas de bloqueo inmediatamente.</li>
-                    <li>Si usaste la sincronizacion con iCloud, los datos sincronizados persisten en tu cuenta de iCloud hasta que los elimines manualmente desde los ajustes de iCloud.</li>
+                    <li>Tregua usa <strong>autorización individual</strong>, no controles parentales. Tú restringes apps en tu propio iPhone, para ti.</li>
+                    <li>Cuando eliges apps, iOS le da a Tregua <strong>tokens opacos</strong>. El código de Tregua no puede leer en ellos nombres de apps ni identificadores de paquete; es iOS quien dibuja los nombres y los iconos en la app.</li>
+                    <li>Los tokens se guardan con tus reglas en tu iPhone. <strong>Si activas la sincronización con iCloud, se incluyen en las reglas sincronizadas</strong> en tu iCloud privado (sección 8). Nunca se envían a nosotros ni a RevenueCat.</li>
+                    <li>Las restricciones las aplica el propio iOS (ManagedSettings) y los horarios los ejecuta iOS (DeviceActivity).</li>
+                    <li>Las cifras de Tiempo de uso que ves en Estadísticas las dibuja una extensión que Apple aísla de internet. Tregua no las guarda ni las envía.</li>
+                    <li>Si activas el filtro de contenido para adultos de Nunca permitido o le añades sitios web, iOS aplica el filtro de Apple y desactiva la navegación privada de Safari mientras esté activo.</li>
+                    <li>Puedes quitarle a Tregua el acceso a Tiempo de uso en cualquier momento en Ajustes de iOS &gt; Tiempo de uso (Tiempo en pantalla en algunas regiones). Al hacerlo se levantan todas las restricciones que Tregua haya puesto.</li>
                 </ul>
             </section>
 
             <section>
-                <h2>8. Aviso de bienestar</h2>
-                <p>Dumbphone es una herramienta de bienestar general y productividad para el uso intencional del telefono. No es un dispositivo medico. No diagnostica, trata, cura ni previene ninguna enfermedad o condicion. Si tienes preocupaciones sobre tu relacion con la tecnologia, consulta a un profesional cualificado.</p>
+                <h2>4. Qué sale de tu iPhone</h2>
+                <p>No tenemos servidores. Solo estos servicios reciben datos de Tregua, y solo para la función indicada:</p>
+                <ul>
+                    <li><strong>RevenueCat</strong> (empresa de EE. UU. que gestiona las compras dentro de la app): cada vez que abres Tregua. Ver la sección 5.</li>
+                    <li><strong>App Store de Apple:</strong> los pagos de Tregua Pro, que gestiona íntegramente Apple.</li>
+                    <li><strong>Apple Weather (WeatherKit) y Apple Maps:</strong> solo si usas un widget del clima. Ver la sección 6.</li>
+                    <li><strong>El directorio público de la App Store de Apple</strong> (itunes.apple.com): cuando eliges apps para el lanzador, Tregua descarga de él los iconos de un catálogo fijo de apps, no de una lista de las apps que tienes instaladas. Si buscas en la App Store desde Tregua, se le envían el texto que escribes y tu región de la App Store. No se incluye ningún identificador tuyo y las búsquedas no se guardan.</li>
+                    <li><strong>iCloud de Apple:</strong> solo si activas la sincronización con iCloud (Pro). Ver la sección 8.</li>
+                </ul>
+                <p>Cualquier conexión a internet revela además la dirección IP de tu dispositivo al servidor con el que conecta.</p>
             </section>
 
             <section>
-                <h2>9. Privacidad de menores</h2>
-                <p>Dumbphone esta disenado para adultos que desean gestionar sus propios habitos con el telefono. La app usa autorizacion individual de Tiempo de Pantalla (no controles parentales). No requiere cuentas, registro ni informacion personal. No hay funciones sociales ni contenido generado por usuarios.</p>
+                <h2>5. Compras y RevenueCat</h2>
+                <p>Tregua es gratis, con una mejora opcional, Tregua Pro (suscripción mensual o anual, o una compra única de por vida). Los pagos los procesa Apple. Nunca vemos tu nombre, tu cuenta de Apple ni tus datos de pago.</p>
+                <p>Para saber si tienes Tregua Pro y para restaurar compras, Tregua usa RevenueCat. Su software se inicia cada vez que abres Tregua, <strong>aunque nunca compres nada</strong>, y envía a RevenueCat:</p>
+                <ul>
+                    <li>un identificador de usuario aleatorio y anónimo creado en tu iPhone;</li>
+                    <li>tus registros de compras y suscripciones, si los hay: producto, fechas, precio, moneda y país de la App Store;</li>
+                    <li>datos técnicos: modelo del dispositivo, versión de iOS, versión de la app, idiomas preferidos y el «identificador de proveedor» de Apple (un ID que iOS asigna a las apps de un mismo desarrollador en tu dispositivo).</li>
+                </ul>
+                <p>No se envían nombre, correo electrónico ni cuenta de Apple. Usamos esta información para desbloquear las funciones Pro, restaurar compras y ver cifras de ventas y suscripciones en el panel de RevenueCat. No la usamos para publicidad ni para rastrearte en apps o sitios web de otras empresas. RevenueCat la procesa en Estados Unidos según su propia <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">política de privacidad</a>.</p>
+                <p>Si empiezas una prueba gratuita y has permitido las notificaciones, Tregua programa en tu iPhone un recordatorio antes de que termine la prueba.</p>
             </section>
 
             <section>
-                <h2>10. Tus derechos por jurisdiccion</h2>
-
-                <p><strong>Union Europea / EEE (RGPD):</strong> Tus datos se procesan en el dispositivo y opcionalmente se sincronizan a traves de CloudKit de Apple a tu contenedor privado de iCloud. El desarrollador no tiene acceso del lado del servidor a tus datos. Responsable del tratamiento: Mike Pulgar Olguin, desarrollador independiente, Espana. Base legal: interes legitimo (funcionalidad de la app). Para ejercer tus derechos RGPD (acceso, rectificacion, supresion, portabilidad, oposicion), contacta: <a href="mailto:mike@mikeastwood.dev">mike@mikeastwood.dev</a>. Autoridad de control: <a href="https://www.aepd.es" target="_blank" rel="noopener">AEPD</a>, C/ Jorge Juan 6, 28001 Madrid, Espana.</p>
-
-                <p><strong>Reino Unido (UK GDPR):</strong> Los residentes del Reino Unido tienen los mismos derechos que bajo el RGPD. Autoridad supervisora: <a href="https://ico.org.uk" target="_blank" rel="noopener">ICO</a>, Wycliffe House, Water Lane, Wilmslow, SK9 5AF, Reino Unido.</p>
-
-                <p><strong>California, EEUU (CCPA/CPRA):</strong> No vendemos informacion personal. No compartimos informacion personal para publicidad conductual. No usamos informacion personal sensible para propositos no autorizados.</p>
-
-                <p><strong>Brasil (LGPD), Canada (PIPEDA), Sudafrica (POPIA), Japon (APPI):</strong> Tus derechos sobre tus datos se respetan bajo todas las jurisdicciones aplicables. Dado que el desarrollador no puede acceder a tus datos, tus derechos de acceso, correccion, eliminacion y portabilidad se ejercen directamente a traves de la app y tus ajustes de iCloud.</p>
+                <h2>6. Clima y ubicación</h2>
+                <p>Los widgets del clima son opcionales. Si usas uno:</p>
+                <ul>
+                    <li><strong>Elegir una ciudad a mano:</strong> el texto que escribes en la búsqueda de ciudades se envía a Apple Maps para sugerir ciudades.</li>
+                    <li><strong>«Usar mi ubicación» (opcional):</strong> Tregua pide permiso de ubicación solo cuando lo tocas. Pide acceso «Mientras se usa la app» con ubicación aproximada (Ubicación exacta desactivada), nunca «Siempre». Toma una lectura por toque y nunca te sigue en segundo plano. El geocodificador de Apple convierte esa lectura en el nombre de una ciudad.</li>
+                    <li>Tregua guarda la ciudad y sus coordenadas, y envía las <strong>coordenadas</strong> a Apple Weather (WeatherKit) para obtener el pronóstico: cuando el widget lo necesita y en actualizaciones periódicas en segundo plano que permite iOS. Esas actualizaciones reutilizan las coordenadas guardadas; no toman una nueva lectura de ubicación.</li>
+                    <li>Si la sincronización con iCloud está activada, la ciudad del widget y sus coordenadas se sincronizan con tu perfil (sección 8).</li>
+                </ul>
+                <p>Nunca recibimos tu ubicación. La <a href="https://www.apple.com/es/legal/privacy/" target="_blank" rel="noopener">política de privacidad de Apple</a> cubre Apple Weather y Apple Maps. Puedes desactivar la ubicación en cualquier momento en Ajustes de iOS &gt; Privacidad y seguridad &gt; Localización (Servicios de ubicación) &gt; Tregua; los widgets usarán entonces la ciudad que elijas a mano.</p>
             </section>
 
             <section>
-                <h2>11. Cambios a esta politica</h2>
-                <p>Si realizamos cambios a esta politica de privacidad, los comunicaremos mediante una actualizacion de la app. La fecha efectiva al inicio de esta politica se actualizara en consecuencia. El uso continuado de la app despues de los cambios constituye aceptacion de la politica actualizada.</p>
+                <h2>7. Cámara</h2>
+                <p>La cámara solo la usa el ejercicio «Muévete un poco», una pausa opcional de Pro que cuenta tus repeticiones (por ejemplo, sentadillas) antes de que se abra una app. Tregua usa la cámara frontal y el framework Vision de Apple, que funciona en el dispositivo, para detectar la postura de tu cuerpo. <strong>No se graba, guarda ni envía ninguna foto ni video.</strong> Tregua pide el permiso de cámara solo cuando empieza este ejercicio, y puedes retirarlo en Ajustes de iOS &gt; Tregua.</p>
             </section>
 
             <section>
-                <h2>12. Contacto</h2>
-                <p>Si tienes preguntas sobre esta politica de privacidad o tus datos:</p>
+                <h2>8. Sincronización opcional con iCloud (Pro)</h2>
+                <p>La sincronización con iCloud está desactivada por defecto. Si la activas (Ajustes &gt; Sincronizar con iCloud), Tregua copia estos registros en tu base de datos privada de iCloud mediante el servicio CloudKit de Apple:</p>
+                <ul>
+                    <li>los perfiles, incluido si cada uno está activo y sus ajustes del lanzador y de los widgets (por ejemplo, una ciudad del clima y sus coordenadas);</li>
+                    <li>las reglas y los horarios, incluidos los tokens de apps de Tiempo de uso descritos en la sección 3;</li>
+                    <li>las vistas y los elementos del lanzador.</li>
+                </ul>
+                <p>Tus recuentos de Estadísticas, la lista Nunca permitido, los presets de fricción, las distracciones predeterminadas y los ajustes de la app <strong>no</strong> se sincronizan.</p>
+                <p>Los datos sincronizados viven en tu propia base de datos privada de iCloud, a la que solo accede tu cuenta de Apple; nosotros no podemos leerla. Como el estado activo de un perfil se sincroniza, activar o desactivar un perfil en un dispositivo puede cambiarlo en tus otros dispositivos. Desactivar la sincronización deja de enviar cambios nuevos; lo que ya está en iCloud se queda ahí hasta que lo borres (sección 11). La <a href="https://www.apple.com/es/legal/privacy/" target="_blank" rel="noopener">política de privacidad de Apple</a> se aplica a iCloud.</p>
+            </section>
+
+            <section>
+                <h2>9. Otros permisos y funciones</h2>
+                <ul>
+                    <li><strong>Fotos (solo añadir):</strong> si guardas un fondo de pantalla de Tregua, iOS pide permiso para añadir fotos. Tregua puede añadir esa imagen, pero no puede ver tu biblioteca de fotos.</li>
+                    <li><strong>Notificaciones:</strong> los avisos sobre tus reglas, sesiones y prueba gratuita se programan en tu iPhone. Tregua no envía notificaciones push desde un servidor.</li>
+                    <li><strong>Contactos, micrófono, datos de salud, identificador de publicidad:</strong> Tregua no los pide.</li>
+                    <li><strong>Escribir a soporte:</strong> si nos escribes desde Ajustes &gt; Soporte, recibimos tu dirección de correo y tu mensaje. El borrador incluye la versión de la app, el modelo del dispositivo, la versión de iOS y el idioma de la app, que puedes borrar antes de enviarlo. Usamos tu correo solo para responderte.</li>
+                    <li><strong>Informes de fallos:</strong> si has activado «Compartir con desarrolladores de apps» en Ajustes de iOS &gt; Privacidad y seguridad &gt; Análisis y mejoras, Apple puede compartir con nosotros informes de fallos anónimos. Eso lo controla Apple.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>10. Lo que no hacemos</h2>
+                <ul>
+                    <li>Sin SDKs de analítica (ni Firebase, ni Mixpanel, ni Google Analytics).</li>
+                    <li>Sin SDKs de informes de fallos (ni Crashlytics, ni Sentry).</li>
+                    <li>Sin publicidad y sin identificador de publicidad.</li>
+                    <li>Sin rastreo en apps o sitios web de otras empresas.</li>
+                    <li>Sin cuentas de usuario, registro ni inicio de sesión.</li>
+                    <li>No vendemos tus datos ni los compartimos con fines publicitarios.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>11. Borrar tus datos</h2>
+                <ul>
+                    <li><strong>Perfiles y reglas:</strong> al borrar uno en la app se elimina y se levantan sus restricciones. Con la sincronización con iCloud activada, también se borra de iCloud.</li>
+                    <li><strong>Ajustes &gt; Borrar todos los datos:</strong> borra tus perfiles, reglas, horarios, vistas del lanzador y ajustes; levanta todas las restricciones, incluida la lista Nunca permitido; cancela las notificaciones programadas; limpia los registros del llavero; y borra los datos de Tregua de tu iCloud privado. Si en ese momento tu iPhone no tiene conexión, la copia de iCloud puede quedarse; también puedes borrarla desde los ajustes de almacenamiento de iCloud. En la versión actual, este botón no borra los recuentos de Estadísticas, los presets de fricción ni las distracciones predeterminadas; se quedan en tu iPhone hasta que borres la app.</li>
+                    <li><strong>Borrar la app</strong> elimina Tregua y los datos que guarda en tu iPhone, salvo los pequeños registros del llavero, que iOS puede conservar. <strong>Las restricciones que estén activas cuando borres la app pueden seguir aplicándose</strong>, porque las aplica iOS, no la app. Antes de borrar Tregua, desactiva tus perfiles o usa Borrar todos los datos. En cualquier momento, quitarle a Tregua el acceso a Tiempo de uso en Ajustes de iOS &gt; Tiempo de uso las levanta todas. Si reinstalas Tregua, la app limpia las restricciones sobrantes que puede identificar.</li>
+                    <li><strong>iCloud:</strong> los datos sincronizados se quedan en tu iCloud hasta que uses Borrar todos los datos o los borres desde los ajustes de almacenamiento de iCloud.</li>
+                    <li><strong>RevenueCat:</strong> para que borremos tu registro de compras, escríbenos. Como el registro es anónimo, puede que te pidamos datos de tu recibo de la App Store para encontrarlo.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>12. Aviso de bienestar</h2>
+                <p>Tregua es una herramienta de bienestar general y productividad para usar el teléfono con intención. No es un dispositivo médico. No diagnostica, trata, cura ni previene ninguna enfermedad o condición. Si te preocupa tu relación con la tecnología, consulta a un profesional cualificado.</p>
+            </section>
+
+            <section>
+                <h2>13. Privacidad de menores</h2>
+                <p>Tregua está pensada para personas adultas que quieren gestionar su propio uso del teléfono. Usa la autorización individual de Tiempo de uso, no controles parentales. No tiene cuentas, ni funciones sociales, ni contenido de usuarios compartido con otros, y no recopilamos a sabiendas información personal de menores.</p>
+            </section>
+
+            <section>
+                <h2>14. Tus derechos según tu jurisdicción</h2>
+
+                <p><strong>Unión Europea / EEE (RGPD):</strong> La mayoría de tus datos nunca salen de tu iPhone, y los que se sincronizan con iCloud se guardan en tu base de datos privada de iCloud, a la que no podemos acceder. Los datos a los que sí podemos acceder son el registro de compras anónimo que guarda RevenueCat (sección 5) y los correos que nos envíes. Responsable del tratamiento: Mike Pulgar Olguin, desarrollador independiente, España. Bases legales: ejecución de un contrato (dar y restaurar las compras), tu consentimiento (la ubicación aproximada, que puedes retirar en los Ajustes de iOS) e interés legítimo (hacer que funcionen las funciones de la app y conocer las ventas). RevenueCat actúa como encargado del tratamiento y procesa datos en Estados Unidos. Para ejercer tus derechos (acceso, rectificación, supresión, portabilidad, oposición), escribe a <a href="mailto:mike@mikeastwood.dev">mike@mikeastwood.dev</a>. Autoridad de control: <a href="https://www.aepd.es" target="_blank" rel="noopener">AEPD</a>, C/ Jorge Juan 6, 28001 Madrid, España.</p>
+
+                <p><strong>Reino Unido (UK GDPR):</strong> Los residentes del Reino Unido tienen los mismos derechos que bajo el RGPD. Autoridad de control: <a href="https://ico.org.uk" target="_blank" rel="noopener">ICO</a>, Wycliffe House, Water Lane, Wilmslow, SK9 5AF, Reino Unido.</p>
+
+                <p><strong>California, EE. UU. (CCPA/CPRA):</strong> No vendemos información personal. No compartimos información personal para publicidad conductual entre contextos. No usamos información personal sensible para fines distintos de ofrecer la app.</p>
+
+                <p><strong>Brasil (LGPD), Canadá (PIPEDA), Sudáfrica (POPIA), Japón (APPI):</strong> Tienes los derechos que te dan estas leyes. La mayoría puedes ejercerlos directamente: tus datos están en tu iPhone y en tu iCloud, y puedes borrarlos como se describe en la sección 11. Para el registro de compras de RevenueCat, escríbenos.</p>
+            </section>
+
+            <section>
+                <h2>15. Cambios en esta política</h2>
+                <p>Si cambia lo que Tregua recopila o envía, actualizaremos esta política y la fecha al inicio de esta página antes de la actualización de la app que introduzca el cambio, o junto con ella.</p>
+            </section>
+
+            <section>
+                <h2>16. Contacto</h2>
+                <p>Si tienes preguntas sobre esta política de privacidad o sobre tus datos:</p>
                 <ul>
                     <li><strong>Correo:</strong> <a href="mailto:mike@mikeastwood.dev">mike@mikeastwood.dev</a></li>
                 </ul>
-                <p>Desarrollador: Mike Pulgar Olguin (desarrollador independiente), Espana.</p>
+                <p>Desarrollador: Mike Pulgar Olguin (desarrollador independiente), España.</p>
             </section>
         </article>
 
@@ -454,10 +550,10 @@
             document.getElementById('content-es').classList.toggle('hidden', lang !== 'es');
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
             document.getElementById('btn-es').classList.toggle('active', lang === 'es');
-            document.getElementById('page-title').textContent = lang === 'en' ? 'Privacy Policy' : 'Politica de Privacidad';
+            document.getElementById('page-title').textContent = lang === 'en' ? 'Privacy Policy' : 'Política de privacidad';
             document.getElementById('page-date').textContent = lang === 'en'
-                ? 'Last updated: April 7, 2026'
-                : 'Ultima actualizacion: 7 de abril de 2026';
+                ? 'Last updated: September 24, 2026'
+                : 'Última actualización: 24 de septiembre de 2026';
             document.documentElement.lang = lang;
         }
 
